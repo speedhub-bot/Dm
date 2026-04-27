@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 antialiased;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand-500/40;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-brand-500 to-purple-600 text-white hover:from-brand-600 hover:to-purple-700 shadow-lg shadow-brand-500/20;
+  }
+  .btn-secondary {
+    @apply btn bg-slate-800 text-slate-100 hover:bg-slate-700 border border-slate-700;
+  }
+  .btn-ghost {
+    @apply btn text-slate-300 hover:text-white hover:bg-slate-800;
+  }
+  .btn-danger {
+    @apply btn bg-red-600/90 text-white hover:bg-red-600;
+  }
+  .input {
+    @apply w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500;
+  }
+  .label {
+    @apply block text-xs font-medium text-slate-400 mb-1;
+  }
+  .card {
+    @apply rounded-xl bg-slate-900/60 border border-slate-800 backdrop-blur-sm;
+  }
+  .card-pad {
+    @apply card p-5;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+  .badge-success {
+    @apply badge bg-emerald-500/15 text-emerald-300 ring-1 ring-emerald-500/30;
+  }
+  .badge-warn {
+    @apply badge bg-amber-500/15 text-amber-300 ring-1 ring-amber-500/30;
+  }
+  .badge-danger {
+    @apply badge bg-red-500/15 text-red-300 ring-1 ring-red-500/30;
+  }
+  .badge-muted {
+    @apply badge bg-slate-700/40 text-slate-300 ring-1 ring-slate-700;
+  }
+  .badge-info {
+    @apply badge bg-sky-500/15 text-sky-300 ring-1 ring-sky-500/30;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(2 6 23);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(30 41 59);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(51 65 85);
+}
