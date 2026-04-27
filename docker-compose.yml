@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: ./backend
+    container_name: dm-backend
+    restart: unless-stopped
+    environment:
+      - DEMO_MODE=${DEMO_MODE:-true}
+      - DATABASE_URL=sqlite:////data/dm.db
+      - SECRET_KEY=${SECRET_KEY:-change-me-please-use-a-strong-random-key-in-production-32+chars}
+      - FERNET_KEY=${FERNET_KEY:-zmF8e7K0d5g2y3n4q5r6t7u8v9w0x1y2z3A4B5C6D7E=}
+      - FIRST_ADMIN_EMAIL=${FIRST_ADMIN_EMAIL:-admin@example.com}
+      - FIRST_ADMIN_PASSWORD=${FIRST_ADMIN_PASSWORD:-changeme123}
+    volumes:
+      - dm_data:/data
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: dm-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  dm_data:
